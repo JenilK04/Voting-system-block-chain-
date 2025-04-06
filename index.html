@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Decentralized Voting DApp</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.1/ethers.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="mainU.js" defer></script>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f7fa;
+        }
+
+        .navbar {
+            overflow: hidden;
+            background-color: #222;
+            padding: 10px 20px;
+        }
+
+        .navbar a {
+            float: left;
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 20px;
+            font-size: 16px;
+        }
+
+        .navbar a:hover {
+            background-color: #fff;
+            color: #222;
+            border-radius: 6px;
+        }
+
+        .welcome {
+            text-align: center;
+            font-size: 26px;
+            margin-top: 40px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .section {
+            margin: 40px auto;
+            max-width: 500px;
+            padding: 30px;
+            background: #ffffff;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .section span {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        input[type="number"],
+        input[type="text"] {
+            width: 80%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #3e8e41;
+        }
+
+        p {
+            font-size: 16px;
+            margin-top: 12px;
+            color: #444;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table th, table td {
+            padding: 12px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        @media screen and (max-width: 600px) {
+            .section {
+                width: 90%;
+                padding: 20px;
+            }
+
+            input[type="number"],
+            input[type="text"] {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="/index.html">Vote</a>
+        <div id="adminLinks"></div>
+         
+    </div>
+
+    <div class="welcome">Welcome to the Decentralized Voting Application</div>
+
+    <div class="section">
+        <button onclick="connectMetamask()">🔗 Connect Metamask</button>
+        <p id="metamasknotification"></p>
+    </div>
+
+    <div class="section">
+        <button onclick="getAllCandidates()">📋 List All Candidates</button>
+        <p id="p3"></p>
+            <div class="section">
+                <table id="myTable">
+                    <thead>
+                        <tr>
+                            <th>Index</th>
+                            <th>Candidate Name</th>
+                            <th>Votes</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="candidatesTableBody">
+                    </tbody>
+                </table>
+            </div>
+    </div>
+
+    <div class="section">
+        <button onclick="voteStatus()">📊 Check Voting Status</button>
+        <p id="status"></p>
+        <p id="time"></p>
+    </div>
+
+</body>
+</html>
