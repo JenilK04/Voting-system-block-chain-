@@ -320,13 +320,19 @@ const voteStatus = async () => {
   }
 };
 
-const addVote = async (candidateIndex) => { 
+const addVote = async (candidateIndex) => {
   if (!isWalletConnected()) return;
 
   try {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
       const contract = new ethers.Contract(contractAddress, contractABI, signer);
+
+      const isVotingOpen = await contract.getVotingStatus();
+      if (!isVotingOpen) {
+          Swal.fire("Voting Closed", "Voting time has ended. You can't vote now.", "warning");
+          return;
+      }
 
       const tx = await contract.vote(candidateIndex);
       await tx.wait();
