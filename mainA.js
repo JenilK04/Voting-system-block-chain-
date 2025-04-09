@@ -1,5 +1,5 @@
 let WALLET_CONNECTED = '';
-let contractAddress = "0xA96d166751Ac67f9767B10c5aE8Dd913523317f5";
+let contractAddress = "0xbF418Ed49Fc9D43211C62Edfc9C0BA31C77ECCF3";
 let contractABI = [
     {
       "inputs": [
